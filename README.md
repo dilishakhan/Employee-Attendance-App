@@ -1,17 +1,108 @@
-# employee_attendance_app
+# Employee Attendance Management System
 
-A new Flutter project.
+A modern **Employee Attendance Management System** built with **Flutter** and **Supabase** to streamline employee attendance tracking. The application provides secure authentication, role-based access, attendance management, profile management, and an admin dashboard for monitoring employees and attendance records.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+##  Features
 
-A few resources to get you started if this is your first Flutter project:
+###  Authentication
+- Secure login using Supabase Authentication
+- Role-based access (Admin & Employee)
+- Persistent user sessions
+- Logout functionality
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+###  Employee Module
+- Daily Check-In
+- Daily Check-Out
+- Automatic working hours calculation
+- Attendance history
+- Profile management
+- Responsive dashboard
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+###  Admin Module
+- Dashboard with employee statistics
+- View total registered employees
+- Attendance overview
+- Employee management
+- Monitor attendance records
+
+###  General Features
+- Clean and responsive UI
+- Riverpod state management
+- Real-time database integration
+- Form validation
+- Secure database using Row Level Security (RLS)
+
+---
+
+##  Tech Stack
+
+| Technology | Usage |
+|------------|-------|
+| Flutter | Frontend Development |
+| Dart | Programming Language |
+| Riverpod | State Management |
+| Go Router | Navigation |
+| Supabase Authentication | User Authentication |
+| PostgreSQL (Supabase) | Database |
+| Supabase Storage | Profile Images (Optional) |
+| Google Fonts | UI Styling |
+
+
+---
+
+##  Future Enhancements
+
+- Leave Management System
+- QR Code Attendance
+- GPS-based Attendance
+- Face Recognition Attendance
+- Push Notifications
+- Monthly Attendance Reports
+- PDF & Excel Export
+- Advanced Admin Analytics
+
+---
+
+##  Development Practices
+
+- Clean Architecture
+- Feature-Based Folder Structure
+- Riverpod State Management
+- Modular & Reusable Code
+- Responsive UI Design
+- Git & GitHub Version Control
+
+---
+
+##  Contributing
+
+1. Fork the repository.
+2. Create a new feature branch.
+3. Commit your changes.
+4. Push your branch.
+5. Open a Pull Request.
+
+
+---
+
+##  Project Highlights
+
+- Cross-platform Flutter application
+  
+- Secure authentication with Supabase
+  
+- Role-based access control
+  
+- Employee and Admin dashboards
+  
+- Automatic working hours calculation
+  
+- Clean, scalable architecture
+  
+- PostgreSQL backend with Row Level Security
+
+---
+
+> Built with ❤️ using Flutter, Riverpod, and Supabase to provide a secure, scalable, and user-friendly Employee Attendance Management System.
