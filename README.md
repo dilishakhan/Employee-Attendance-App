@@ -76,33 +76,16 @@ A modern **Employee Attendance Management System** built with **Flutter** and **
 
 ---
 
-##  Contributing
-
-1. Fork the repository.
-2. Create a new feature branch.
-3. Commit your changes.
-4. Push your branch.
-5. Open a Pull Request.
-
-
----
-
 ##  Project Highlights
 
 - Cross-platform Flutter application
-  
 - Secure authentication with Supabase
-  
 - Role-based access control
-  
 - Employee and Admin dashboards
-  
 - Automatic working hours calculation
-  
 - Clean, scalable architecture
-  
 - PostgreSQL backend with Row Level Security
 
 ---
 
-> Built with ❤️ using Flutter, Riverpod, and Supabase to provide a secure, scalable, and user-friendly Employee Attendance Management System.
+>
