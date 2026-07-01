@@ -30,38 +30,39 @@ class _EmployeeListScreenState extends ConsumerState<EmployeeListScreen> {
 
     return Scaffold(
       backgroundColor: const Color(0xffF5F7FB),
-
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        centerTitle: false,
         title: const Text(
           "Employees",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-
       body: Padding(
         padding: const EdgeInsets.all(24),
-
         child: Column(
           children: [
+            // Search Bar
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(16),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(.08),
+                    blurRadius: 8,
+                    offset: const Offset(0, 3),
+                  ),
+                ],
               ),
-
               child: TextField(
                 controller: searchController,
-
                 onChanged: (value) {
                   setState(() {
-                    search = value.toLowerCase();
+                    search = value.toLowerCase().trim();
                   });
                 },
-
                 decoration: const InputDecoration(
                   hintText: "Search employee...",
                   prefixIcon: Icon(Icons.search),
@@ -84,21 +85,79 @@ class _EmployeeListScreenState extends ConsumerState<EmployeeListScreen> {
                         employee.email.toLowerCase().contains(search);
                   }).toList();
 
+                  // Empty State
                   if (filtered.isEmpty) {
-                    return const Center(child: Text("No employees found"));
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Icon(
+                            Icons.people_outline,
+                            size: 70,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(height: 16),
+                          Text(
+                            "No employees found",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   }
 
-                  return ListView.builder(
+                  return ListView.separated(
                     itemCount: filtered.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 12),
                     itemBuilder: (context, index) {
                       return EmployeeCard(employee: filtered[index]);
                     },
                   );
                 },
 
+                // Loading State
                 loading: () => const Center(child: CircularProgressIndicator()),
 
-                error: (e, _) => Center(child: Text(e.toString())),
+                // Error State
+                error: (error, stackTrace) {
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.error_outline,
+                          color: Colors.red,
+                          size: 70,
+                        ),
+                        const SizedBox(height: 15),
+                        const Text(
+                          "Failed to load employees",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          error.toString(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.grey),
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton.icon(
+                          onPressed: () {
+                            ref.invalidate(employeeProvider);
+                          },
+                          icon: const Icon(Icons.refresh),
+                          label: const Text("Retry"),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ],
@@ -127,13 +186,10 @@ class EmployeeCard extends StatelessWidget {
 
     return Card(
       elevation: 2,
-      margin: const EdgeInsets.only(bottom: 18),
-
+      margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-
       child: InkWell(
         borderRadius: BorderRadius.circular(18),
-
         onTap: () {
           Navigator.push(
             context,
@@ -142,16 +198,13 @@ class EmployeeCard extends StatelessWidget {
             ),
           );
         },
-
         child: Padding(
           padding: const EdgeInsets.all(20),
-
           child: Row(
             children: [
               CircleAvatar(
                 radius: 28,
                 backgroundColor: AppColors.primary.withOpacity(.15),
-
                 child: Text(
                   initials,
                   style: const TextStyle(
@@ -166,7 +219,6 @@ class EmployeeCard extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-
                   children: [
                     Text(
                       employee.name,
@@ -194,12 +246,10 @@ class EmployeeCard extends StatelessWidget {
                             horizontal: 12,
                             vertical: 6,
                           ),
-
                           decoration: BoxDecoration(
                             color: Colors.blue.shade50,
                             borderRadius: BorderRadius.circular(30),
                           ),
-
                           child: Text(
                             employee.department,
                             style: const TextStyle(
@@ -214,18 +264,14 @@ class EmployeeCard extends StatelessWidget {
                             horizontal: 12,
                             vertical: 6,
                           ),
-
                           decoration: BoxDecoration(
                             color: employee.role == "admin"
                                 ? Colors.red.shade50
                                 : Colors.green.shade50,
-
                             borderRadius: BorderRadius.circular(30),
                           ),
-
                           child: Text(
                             employee.role.toUpperCase(),
-
                             style: TextStyle(
                               color: employee.role == "admin"
                                   ? Colors.red

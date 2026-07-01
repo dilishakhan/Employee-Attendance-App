@@ -8,6 +8,7 @@ import 'package:employee_attendance_app/features/leave/screens/leave_history_scr
 import 'package:employee_attendance_app/features/leave/screens/leave_request_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:employee_attendance_app/features/profile/screens/profile_screen.dart';
 
 class DashboardScreen extends ConsumerWidget {
   const DashboardScreen({super.key});
@@ -45,6 +46,18 @@ class DashboardScreen extends ConsumerWidget {
         ),
         actions: [
           IconButton(
+            tooltip: "My Profile",
+            icon: const Icon(Icons.account_circle),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const ProfileScreen()),
+              );
+            },
+          ),
+
+          IconButton(
+            tooltip: "Logout",
             onPressed: () => logout(context),
             icon: const Icon(Icons.logout),
           ),
@@ -207,7 +220,7 @@ class DashboardScreen extends ConsumerWidget {
 
                             if (checkedIn)
                               Text(
-                                "Check In : ${TimeOfDay.fromDateTime(record!.checkIn.toLocal()).format(context)}",
+                                "Check In : ${TimeOfDay.fromDateTime(record.checkIn.toLocal()).format(context)}",
                               ),
 
                             if (checkedOut) ...[

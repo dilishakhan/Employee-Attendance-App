@@ -8,3 +8,7 @@ final adminLeaveServiceProvider = Provider((ref) => AdminLeaveService());
 final pendingLeaveProvider = FutureProvider<List<AdminLeaveModel>>((ref) async {
   return ref.read(adminLeaveServiceProvider).getPendingLeaves();
 });
+
+final allLeaveProvider = FutureProvider<List<AdminLeaveModel>>((ref) async {
+  return ref.read(adminLeaveServiceProvider).getAllLeaves();
+});

@@ -17,6 +17,19 @@ class AdminLeaveService {
         .toList();
   }
 
+  Future<List<AdminLeaveModel>> getAllLeaves() async {
+    final response = await _client
+        .from('leave_requests')
+        .select('*, users(name)')
+        .order('created_at', ascending: false);
+
+    print(response);
+
+    return response
+        .map<AdminLeaveModel>((e) => AdminLeaveModel.fromJson(e))
+        .toList();
+  }
+
   Future<void> approveLeave(String id) async {
     await _client
         .from('leave_requests')

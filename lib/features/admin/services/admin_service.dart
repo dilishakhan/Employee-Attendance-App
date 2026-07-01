@@ -4,10 +4,11 @@ class AdminService {
   final SupabaseClient _client = Supabase.instance.client;
 
   Future<int> getEmployeeCount() async {
-    final response = await _client
-        .from('users')
-        .select()
-        .eq('role', 'Employee');
+    final response = await _client.from('users').select().order('name');
+
+    print("EMPLOYEE COUNT RESPONSE:");
+    print(response);
+    print("TOTAL USERS: ${response.length}");
 
     return response.length;
   }

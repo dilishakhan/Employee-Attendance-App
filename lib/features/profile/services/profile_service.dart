@@ -20,4 +20,20 @@ class ProfileService {
 
     return UserModel.fromJson(response);
   }
+
+  Future<void> updateProfile({
+    required String name,
+    required String phone,
+  }) async {
+    final user = _client.auth.currentUser;
+
+    if (user == null) {
+      throw Exception("User not logged in");
+    }
+
+    await _client
+        .from('users')
+        .update({'name': name, 'phone': phone})
+        .eq('id', user.id);
+  }
 }
