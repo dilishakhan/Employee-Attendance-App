@@ -147,6 +147,4 @@ Authentication is handled using Supabase Auth with Row Level Security (RLS) enab
 
 ---
 
-# Author
 
-Developed using Flutter and Supabase as part of the Employee Attendance Management System project.
