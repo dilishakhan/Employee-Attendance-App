@@ -1,91 +1,152 @@
 # Employee Attendance Management System
 
-A modern **Employee Attendance Management System** built with **Flutter** and **Supabase** to streamline employee attendance tracking. The application provides secure authentication, role-based access, attendance management, profile management, and an admin dashboard for monitoring employees and attendance records.
+A Flutter-based Employee Attendance Management System that enables employees to manage attendance and leave requests while providing administrators with tools to monitor employees, attendance records, and leave approvals. The project uses Supabase as the backend for authentication and database management.
 
 ---
 
-##  Features
+# Project Overview
 
-###  Authentication
-- Secure login using Supabase Authentication
-- Role-based access (Admin & Employee)
-- Persistent user sessions
-- Logout functionality
+This application provides a simple and efficient way to manage employee attendance digitally. Employees can check in/out, view attendance history, request leave, and manage their profile. Administrators can monitor employees, view attendance reports, approve/reject leave requests, and access dashboard statistics.
 
-###  Employee Module
+---
+
+# Tech Stack
+
+## Frontend
+- Flutter
+- Dart
+- Riverpod (State Management)
+- Go Router (Navigation)
+- Google Fonts
+
+## Backend
+- Supabase Authentication
+- Supabase PostgreSQL Database
+- Row Level Security (RLS)
+
+## Architecture
+- Feature-first folder structure
+- Repository Pattern
+- Provider-based State Management
+
+---
+
+# Features Implemented
+
+## Authentication
+- Login using Supabase Authentication
+- Role-based login (Admin & Employee)
+- Persistent login session
+- Secure logout
+
+## Employee Features
 - Daily Check-In
 - Daily Check-Out
-- Automatic working hours calculation
-- Attendance history
-- Profile management
-- Responsive dashboard
+- Working Hours Calculation
+- Attendance History
+- Leave Request Submission
+- Leave Status Tracking
+- Profile Management
+- Update Name
+- Update Phone Number
+- View Department
+- View Designation
 
-###  Admin Module
-- Dashboard with employee statistics
-- View total registered employees
-- Attendance overview
-- Employee management
-- Monitor attendance records
+## Admin Features
+- Dashboard Statistics
+- Employee Management
+- Attendance Monitoring
+- Leave Request Approval/Rejection
+- Registered Employee Count
+- Attendance Count
+- Leave Count
 
-###  General Features
-- Clean and responsive UI
-- Riverpod state management
-- Real-time database integration
-- Form validation
-- Secure database using Row Level Security (RLS)
+## Search & Filters
+- Search employees by name
+- Filter attendance by date
+- Filter leave requests by status
+
+## UI Improvements
+- Loading Indicators
+- Empty States
+- Error States
+- Retry Actions
+- Form Validation
+- User-friendly Error Messages
+
+## Code Quality
+- Reusable Widgets
+- Repository Pattern
+- Riverpod Providers
+- Clean Folder Structure
+- Code Refactoring
+- Comments for Better Readability
 
 ---
 
-##  Tech Stack
+# Setup Instructions
 
-| Technology | Usage |
-|------------|-------|
-| Flutter | Frontend Development |
-| Dart | Programming Language |
-| Riverpod | State Management |
-| Go Router | Navigation |
-| Supabase Authentication | User Authentication |
-| PostgreSQL (Supabase) | Database |
-| Supabase Storage | Profile Images (Optional) |
-| Google Fonts | UI Styling |
+## 1. Clone the Repository
 
+```bash
+git clone <repository-url>
+```
+
+## 2. Navigate to the Project
+
+```bash
+cd employee_attendance_app
+```
+
+## 3. Install Dependencies
+
+```bash
+flutter pub get
+```
+
+## 4. Configure Supabase
+
+Update the Supabase URL and Anon Key inside:
+
+```
+lib/supabase_options.dart
+```
 
 ---
 
-##  Future Enhancements
+## 5. Run the Application
 
-- Leave Management System
-- QR Code Attendance
-- GPS-based Attendance
-- Face Recognition Attendance
+```bash
+flutter run
+```
+
+---
+
+# Database
+
+Supabase PostgreSQL is used for storing:
+
+- Users
+- Attendance Records
+- Leave Requests
+- Employee Profiles
+
+Authentication is handled using Supabase Auth with Row Level Security (RLS) enabled.
+
+---
+
+# Future Improvements
+
+- Profile Picture Upload
+- Attendance Reports Export
 - Push Notifications
-- Monthly Attendance Reports
-- PDF & Excel Export
-- Advanced Admin Analytics
+- Biometric Authentication
+- Calendar View
+- Admin Analytics Dashboard
+- Dark Mode Support
 
 ---
 
-##  Development Practices
+# Author
 
-- Clean Architecture
-- Feature-Based Folder Structure
-- Riverpod State Management
-- Modular & Reusable Code
-- Responsive UI Design
-- Git & GitHub Version Control
-
----
-
-##  Project Highlights
-
-- Cross-platform Flutter application
-- Secure authentication with Supabase
-- Role-based access control
-- Employee and Admin dashboards
-- Automatic working hours calculation
-- Clean, scalable architecture
-- PostgreSQL backend with Row Level Security
-
----
-
->
+Developed using Flutter and Supabase as part of the Employee Attendance Management System project.
